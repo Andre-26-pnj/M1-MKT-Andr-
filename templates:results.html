@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salle {{ code }} — Résultats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body class="bg">
+    <main class="container">
+      <div class="card hero">
+        <div class="hero-top">
+          <div>
+            <div class="pill">🏆 Résultats finaux</div>
+            <h1 class="roomcode">{{ code }}</h1>
+            <div class="sub" id="finalTitle">Ton titre: …</div>
+          </div>
+          <div class="hero-actions">
+            <button class="btn primary" id="replayBtn">🔁 Rejouer avec les mêmes amis</button>
+            <a class="btn ghost" href="{{ url_for('index') }}">🏠 Nouvelle partie</a>
+          </div>
+        </div>
+      </div>
+
+      <section class="card">
+        <h2>Podium</h2>
+        <div class="podium big" id="podium"></div>
+      </section>
+
+      <section class="card">
+        <h2>Scores</h2>
+        <div class="table" id="scoreTable"></div>
+      </section>
+    </main>
+
+    <script>
+      window.QUIZ_CODE = "{{ code }}";
+      window.QUIZ_PAGE = "results";
+    </script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+  </body>
+</html>
+

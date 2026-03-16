@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salle {{ code }} — Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body class="bg">
+    <main class="container">
+      <div class="topline">
+        <div class="pill">🎮 En jeu — <span class="mono">{{ code }}</span></div>
+        <div class="progress">
+          <div class="progress-text" id="progressText">Question —/—</div>
+          <div class="bar"><div class="bar-inner" id="barInner"></div></div>
+        </div>
+        <div class="timer">
+          <div class="timer-label">⏱️</div>
+          <div class="timer-value" id="timerValue">20</div>
+        </div>
+      </div>
+
+      <section class="card question-card" id="questionCard">
+        <div class="q-title" id="questionText">Chargement de la question…</div>
+        <div class="answers" id="answers"></div>
+        <div class="after" id="afterArea" style="display:none;">
+          <div class="reveal">
+            <div class="reveal-good" id="revealGood">✅ Bonne réponse : —</div>
+            <div class="reveal-ane" id="revealAnecdote">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Classement (intermédiaire)</h2>
+        <div class="podium" id="podium"></div>
+        <div class="table" id="scoreTable"></div>
+      </section>
+
+      <section class="card subtle">
+        <div class="hint">Les points dépendent de ta rapidité. Oui, c’est injuste. Mais fun.</div>
+      </section>
+    </main>
+
+    <script>
+      window.QUIZ_CODE = "{{ code }}";
+      window.QUIZ_PAGE = "game";
+    </script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+  </body>
+</html>
+
